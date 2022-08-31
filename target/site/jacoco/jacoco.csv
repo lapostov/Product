@@ -1,7 +1,0 @@
-GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-Product,default,ProductTest,3,0,0,0,1,0,1,0,1,0
-Product,default,ManagerProduct,8,82,1,7,1,20,1,9,0,6
-Product,default,Book,16,0,0,0,6,0,3,0,3,0
-Product,default,ProductRepository,0,167,0,14,0,33,0,13,0,6
-Product,default,Product,13,21,0,0,6,8,3,4,3,4
-Product,default,Smartphone,3,0,0,0,1,0,1,0,1,0
