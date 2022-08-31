@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ManagerProduct.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Product</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">ManagerProduct.java</span></div><h1>ManagerProduct.java</h1><pre class="source lang-java linenums">public class ManagerProduct {
+ProductRepository repository;
+
+<span class="fc" id="L4">    public ManagerProduct(ProductRepository repository) {</span>
+<span class="fc" id="L5">        this.repository = repository;</span>
+<span class="fc" id="L6">    }</span>
+
+    public void add (Product product){
+<span class="fc" id="L9">        repository.add(product);</span>
+<span class="fc" id="L10">    }</span>
+
+    public void removeById (Product product){
+<span class="fc" id="L13">        repository.removeById(product.getId());</span>
+<span class="fc" id="L14">    }</span>
+
+    public Product[] getItems() {
+<span class="fc" id="L17">        Product[] all = repository.findAll();</span>
+<span class="fc" id="L18">        return all;</span>
+    }
+
+    public Product[] searchBy(String text) {
+<span class="fc" id="L22">        Product[] result = new Product[0]; // тут будем хранить подошедшие запросу продукты</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        for (Product product: repository.findAll()) {</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">            if (matches(product, text)) {</span>
+
+                // &quot;добавляем в конец&quot; массива result продукт product
+<span class="fc" id="L27">                Product[] tmp = new Product[result.length + 1];</span>
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">                for (int i = 0; i &lt; result.length; i++) {</span>
+<span class="nc" id="L29">                    tmp[i] = result[i];</span>
+                }
+<span class="fc" id="L31">                tmp[tmp.length - 1] = product;</span>
+<span class="fc" id="L32">                result = tmp;</span>
+            }
+        }
+<span class="fc" id="L35">        return result;</span>
+    }
+
+    // метод определения соответствия товара product запросу search
+    public boolean matches(Product product, String search) {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (product.getName().contains(search)) {</span>
+<span class="fc" id="L41">            return true;</span>
+        } else {
+<span class="fc" id="L43">            return false;</span>
+        }
+        // или в одну строку:
+        // return product.getName().contains(search);
+    }
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
