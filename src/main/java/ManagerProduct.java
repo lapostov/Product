@@ -9,8 +9,8 @@ ProductRepository repository;
         repository.add(product);
     }
 
-    public void removeById (Product product){
-        repository.removeById(product.getId());
+    public void removeById (int product) throws NotFoundException {
+        repository.removeById(product);
     }
 
     public Product[] getItems() {
@@ -47,5 +47,6 @@ ProductRepository repository;
     }
 
 
+    }
 
-}
+

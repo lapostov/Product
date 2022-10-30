@@ -2,7 +2,7 @@ public class ProductRepository {
 
     private Product[] items = new Product[0];
 
-    public void add (Product product) {
+    public void add(Product product) {
         Product[] tmp = new Product[items.length + 1];
         for (int i = 0; i < items.length; i++) {
             tmp[i] = items[i];
@@ -11,7 +11,11 @@ public class ProductRepository {
         items = tmp;
     }
 
-    public Product[] removeById(int removeId) {
+    public Product[] removeById(int removeId) throws NotFoundException {
+        if (findById(removeId) == null){
+
+            throw new NotFoundException("Element with id: " + removeId + " not found");
+        }
         Product[] tmp = new Product[items.length - 1];
         int copyToIndex = 0;
         for (Product product : items) {
@@ -52,9 +56,19 @@ public class ProductRepository {
         return items;
     }
 
-        public Product[] findAll() {
-            return items;
-        }
+    public Product[] findAll() {
+        return items;
+    }
 
+    public Product findById(int removeId){
+Product result = null;
+for (Product product : items){
+        if (product.getId() == removeId) {
+    result = product;
+    break;
+    }
+}
+return result;
+    }
 
 }

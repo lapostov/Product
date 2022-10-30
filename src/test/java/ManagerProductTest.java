@@ -41,12 +41,11 @@ public class ManagerProductTest {
         manager.add(phone2);
         manager.add(phone3);
 
-        manager.removeById(phone2);
-        Product[] expected = {phone1, phone3};
-        Product[] actual = manager.getItems();
+            Assertions.assertThrows(NotFoundException.class,
+                () -> {  manager.removeById(221);
+                });
+        }
 
-        Assertions.assertArrayEquals(actual, expected);
-    }
 
     @Test
     public void findAll() {
