@@ -1,15 +1,15 @@
 public class ManagerProduct {
-ProductRepository repository;
+    ProductRepository repository;
 
     public ManagerProduct(ProductRepository repository) {
         this.repository = repository;
     }
 
-    public void add (Product product){
+    public void add(Product product) {
         repository.add(product);
     }
 
-    public void removeById (int product) throws NotFoundException {
+    public void removeById(int product) throws NotFoundException {
         repository.removeById(product);
     }
 
@@ -20,7 +20,7 @@ ProductRepository repository;
 
     public Product[] searchBy(String text) {
         Product[] result = new Product[0]; // тут будем хранить подошедшие запросу продукты
-        for (Product product: repository.findAll()) {
+        for (Product product : repository.findAll()) {
             if (matches(product, text)) {
 
                 // "добавляем в конец" массива result продукт product
@@ -47,6 +47,6 @@ ProductRepository repository;
     }
 
 
-    }
+}
 
 

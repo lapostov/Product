@@ -8,8 +8,6 @@ public class ManagerProductTest {
     private ManagerProductTest repository;
 
 
-
-
     @Test
     public void add() {
         Product phone1 = new Product(11, "PhoneName1", 5500);
@@ -18,11 +16,11 @@ public class ManagerProductTest {
         ProductRepository repo = new ProductRepository();
         ManagerProduct manager = new ManagerProduct(repo);
 
-     manager.add(phone1);
-     manager.add(phone3);
+        manager.add(phone1);
+        manager.add(phone3);
 
-     Product[] expected = {phone1, phone3};
-     Product[] actual = manager.getItems();
+        Product[] expected = {phone1, phone3};
+        Product[] actual = manager.getItems();
 
         Assertions.assertArrayEquals(actual, expected);
     }
@@ -41,10 +39,11 @@ public class ManagerProductTest {
         manager.add(phone2);
         manager.add(phone3);
 
-            Assertions.assertThrows(NotFoundException.class,
-                () -> {  manager.removeById(221);
+        Assertions.assertThrows(NotFoundException.class,
+                () -> {
+                    manager.removeById(221);
                 });
-        }
+    }
 
 
     @Test
@@ -126,9 +125,5 @@ public class ManagerProductTest {
 
         Assertions.assertArrayEquals(actual, expected);
     }
-
-
-
-
 }
 
