@@ -12,7 +12,7 @@ public class ProductRepository {
     }
 
     public Product[] removeById(int removeId) throws NotFoundException {
-        if (findById(removeId) == null){
+        if (findById(removeId) == null) {
 
             throw new NotFoundException("Element with id: " + removeId + " not found");
         }
@@ -60,15 +60,15 @@ public class ProductRepository {
         return items;
     }
 
-    public Product findById(int removeId){
-Product result = null;
-for (Product product : items){
-        if (product.getId() == removeId) {
-    result = product;
-    break;
-    }
-}
-return result;
+    public Product findById(int removeId) {
+        Product result = null;
+        for (Product product : items) {
+            if (product.getId() == removeId) {
+                result = product;
+                break;
+            }
+        }
+        return result;
     }
 
 }
